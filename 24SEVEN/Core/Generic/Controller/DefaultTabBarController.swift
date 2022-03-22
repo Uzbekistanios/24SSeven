@@ -19,8 +19,8 @@ class DefaultTabBarController: UITabBarController {
     
     private func setupTabs(){
         self.delegate = self
-        tabBar.barTintColor = UIColor.tabBarPrimaryColor
-        tabBar.tintColor = UIColor.tabBarItemsPrimaryColor
+        tabBar.barTintColor = UIColor.black //UIColor.tabBarPrimaryColor
+        tabBar.tintColor =  UIColor.black//UIColor.tabBarItemsPrimaryColor
         viewControllers = [homeVC, categoryVC, cartVC, profileVC]
     }
 }

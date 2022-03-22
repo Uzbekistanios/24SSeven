@@ -11,7 +11,7 @@ class SearchAndScanView : IBView {
     
     var searchTextField = SearchTextField()
     
-    var scanButton = UIButton.makeButton(imageName: Constants.scanner,cornerRadius: 24.0)
+//    var scanButton = UIButton.makeButton(imageName: Constants.scanner,cornerRadius: 24.0)
     
     var favoriteButton = UIButton.makeButton(imageName: Constants.favorite, cornerRadius: 24.0)
     
@@ -38,8 +38,8 @@ class SearchAndScanView : IBView {
     }
     
     private func style() {
-        scanButton.tintColor = UIColor.defaultOrange
-        scanButton.backgroundColor = UIColor.mainSubviewColor
+//        scanButton.tintColor = UIColor.defaultOrange
+//        scanButton.backgroundColor = UIColor.mainSubviewColor
         
         favoriteButton.tintColor = UIColor.defaultOrange
         favoriteButton.backgroundColor = UIColor.mainSubviewColor
@@ -47,10 +47,10 @@ class SearchAndScanView : IBView {
     
     private func layout() {
         addSubview(searchTextField)
-        addSubview(scanButton)
+//        addSubview(scanButton)
         addSubview(favoriteButton)
         
-        searchTextFieldTrailngToScanButtonAnchor = searchTextField.trailingAnchor.constraint(equalTo: scanButton.leadingAnchor, constant: -15)
+        searchTextFieldTrailngToScanButtonAnchor = searchTextField.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -15)
         
         searchTextFieldTrailngToSuperAnchor = searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
 
@@ -61,10 +61,10 @@ class SearchAndScanView : IBView {
             searchTextField.heightAnchor.constraint(equalToConstant: 48),
             searchTextFieldTrailngToScanButtonAnchor,
             
-            scanButton.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -12),
-            scanButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
-            scanButton.heightAnchor.constraint(equalToConstant: 48),
-            scanButton.widthAnchor.constraint(equalToConstant: 48),
+//            scanButton.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -12),
+//            scanButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
+//            scanButton.heightAnchor.constraint(equalToConstant: 48),
+//            scanButton.widthAnchor.constraint(equalToConstant: 48),
 
             favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             favoriteButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
@@ -74,7 +74,7 @@ class SearchAndScanView : IBView {
     }
     private func setupTargets() {
         searchTextField.addTarget(self, action: #selector(handleSearch), for: .touchDown)
-        scanButton.addTarget(self, action: #selector(handleScan), for: .primaryActionTriggered)
+//        scanButton.addTarget(self, action: #selector(handleScan), for: .primaryActionTriggered)
         favoriteButton.addTarget(self, action: #selector(handleFavorite), for: .primaryActionTriggered)
     }
     
@@ -97,7 +97,7 @@ class SearchAndScanView : IBView {
         searchTextFieldTrailngToSuperAnchor.isActive = isIdentity
         
         UIView.animate(withDuration: 0.2) {
-            self.scanButton.alpha = isIdentity ? 0 : 1
+//            self.scanButton.alpha = isIdentity ? 0 : 1
             self.favoriteButton.alpha = isIdentity ? 0 : 1
             self.layoutIfNeeded()
         }

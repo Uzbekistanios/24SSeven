@@ -34,7 +34,7 @@ class SearchResultView : GenericView {
         ])
        
         searchVC.searchAndScanView.favoriteButton.isHidden = true
-        searchVC.searchAndScanView.scanButton.isHidden = true
+//        searchVC.searchAndScanView.scanButton.isHidden = true
         
         UIView.animate(withDuration: 0.4) {
             self.layoutIfNeeded()

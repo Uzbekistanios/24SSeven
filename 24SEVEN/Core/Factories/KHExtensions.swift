@@ -1,6 +1,9 @@
 
 import UIKit
 //import Kingfisher
+import SDWebImage
+import SDWebImageSVGCoder
+
 
 extension String {
     func phoneFormat(with mask: String) -> String {
@@ -54,10 +57,11 @@ extension String {
 
 extension UIImageView{
     func setImage(imageUrl: String) {
-        self.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "LargeLogo"))
+        self.sd_setImage(with: URL(string: imageUrl), placeholderImage:  UIImage(named: "LargeLogo"))
     }
     func setImageForItem(imageUrl: String) {
-        self.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "LargeLogo"))
+        self.sd_setImage(with: URL(string: imageUrl), placeholderImage:  UIImage(named: "LargeLogo"))
+
     }
 }
 
@@ -135,19 +139,19 @@ extension UIViewController {
 }
 
 func downloadImage(with urlString : String , imageCompletionHandler: @escaping (UIImage?) -> Void){
-    guard let url = URL.init(string: urlString) else {
-        return  imageCompletionHandler(nil)
-    }
-    let resource = ImageResource(downloadURL: url)
-    
-    KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
-        switch result {
-        case .success(let value):
-            imageCompletionHandler(value.image)
-        case .failure:
-            imageCompletionHandler(nil)
-        }
-    }
+//    guard let url = URL.init(string: urlString) else {
+//        return  imageCompletionHandler(nil)
+//    }
+//    let resource = ImageResource(downloadURL: url)
+//
+//    KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+//        switch result {
+//        case .success(let value):
+//            imageCompletionHandler(value.image)
+//        case .failure:
+//            imageCompletionHandler(nil)
+//        }
+//    }
 }
 
 extension Dictionary {

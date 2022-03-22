@@ -9,6 +9,7 @@ class ViewAllViewController : GenericViewController {
     let _view = ViewAllView()
     var numberOfItems: Int?
     var categoryId: Int?
+    var didSelectFilterIndex = 0
     
     var navBarTitle: String?{
         didSet {
@@ -79,7 +80,7 @@ extension ViewAllViewController: UICollectionViewDataSource {
         if let pagination = viewModel.pagination {
             if numberOfItems == indexPath.row + 1 && pagination.nextPage != nil {
                 viewModel.delegate = self
-                viewModel.fetchCategoryItems(categorySection: categoryId ?? 0, page:  pagination.nextPage ?? 1, orderBy: "popular")
+                viewModel.fetchCategoryItems(categorySection: categoryId ?? 0, page:  pagination.nextPage ?? 1, orderBy: MockData.sortTypes[didSelectFilterIndex])
             }
         }
         
@@ -176,7 +177,10 @@ extension ViewAllViewController : SortViewControllerDelegate {
         _view.sortOption = option
         viewModel.itemsCategory = []
         viewModel.delegate = self
-        viewModel.fetchCategoryItems(categorySection: categoryId ?? 0, page: 1, orderBy: MockData.sortTypes[index])
+        didSelectFilterIndex = index
+        viewModel.fetchCategoryItems(categorySection: categoryId ?? 0,
+                                     page: 1,
+                                     orderBy: MockData.sortTypes[didSelectFilterIndex])
     }
 }
 
